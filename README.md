@@ -13,3 +13,6 @@ Multiple AZs are used for high availability, SSL is terminated at the load balan
 * Security groups for the container and load balancer
 * A DNS record for Route 53
 * An auto scaling policy
+
+Was taken from https://github.com/1Strategy/fargate-cloudformation-example
+The original template was left in the root folder and a few more were added in the AA folder.

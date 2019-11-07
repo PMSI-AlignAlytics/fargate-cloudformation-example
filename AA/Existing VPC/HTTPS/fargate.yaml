@@ -10,11 +10,11 @@ Parameters:
   Certificate:
     Type: String
     # Update with the certificate ARN from Certificate Manager, which must exist in the same region.
-    Default: 'arn:aws:acm:region:123456789012:certificate/00000000-0000-0000-0000-000000000000'
+    Default: 'arn:aws:acm:eu-west-2:746502636806:certificate/dce36807-03ee-4165-86b5-bf75ec76b190'
   Image:
     Type: String
     # Update with the Docker image. "You can use images in the Docker Hub registry or specify other repositories (repository-url/image:tag)."
-    Default: 123456789012.dkr.ecr.region.amazonaws.com/image:tag
+    Default: nginxdemos/hello
   ServiceName:
     Type: String
     # update with the name of the service
@@ -27,10 +27,10 @@ Parameters:
     Default: 443
   HealthCheckPath:
     Type: String
-    Default: /healthcheck
+    Default: /
   HostedZoneName:
     Type: String
-    Default: company.com
+    Default: alytic.io
   Subdomain:
     Type: String
     Default: myservice
@@ -158,7 +158,7 @@ Resources:
     # This dependency is needed so that the load balancer is setup correctly in time
     DependsOn:
       - ListenerHTTPS
-    Properties: 
+    Properties:
       ServiceName: !Ref ServiceName
       Cluster: !Ref Cluster
       TaskDefinition: !Ref TaskDefinition
@@ -169,7 +169,7 @@ Resources:
       # This may need to be adjusted if the container takes a while to start up
       HealthCheckGracePeriodSeconds: 30
       LaunchType: FARGATE
-      NetworkConfiguration: 
+      NetworkConfiguration:
         AwsvpcConfiguration:
           # change to DISABLED if you're using private subnets that have access to a NAT gateway
           AssignPublicIp: ENABLED
