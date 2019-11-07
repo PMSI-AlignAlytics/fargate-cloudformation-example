@@ -15,4 +15,7 @@ Multiple AZs are used for high availability, SSL is terminated at the load balan
 * An auto scaling policy
 
 Was taken from https://github.com/1Strategy/fargate-cloudformation-example
-The original template was left in the root folder and a few more were added in the AA folder.
+
+The original template was left as it is in the root folder and a few more templates were added in the AA folder.
+AA\Existing VPC\HTTPS\fargate.yaml by default uses alytic.io SSL certificate from London region and
+AA\Create VPC\HTTPS\fargate.yaml uses the same alytic.io certificate from N. Virginia region so default certificate ARNs are valid in these regions.
